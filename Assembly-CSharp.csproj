@@ -112,6 +112,7 @@
     <Compile Include="Assets\Game\Level_Dont_Touch\Standard Assets\Utility\SimpleActivatorMenu.cs" />
     <Compile Include="Assets\Game\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Game\Scripts\LookDirection.cs" />
+    <Compile Include="Assets\Game\Scripts\CameraLookDirection.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Game\Level_Dont_Touch\Environment_Model\Cinema Suite\Cinema Themes\ReadMe.txt" />
