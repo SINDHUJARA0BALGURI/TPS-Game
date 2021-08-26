@@ -12,10 +12,14 @@ public class PlayerMovement : MonoBehaviour
     private GameObject particleEffectPrefab;
     [SerializeField]
     private GameObject hitMarketParticlePrefab;
+     AudioSource bulletClip;
+    public AudioClip sound;
     // Start is called before the first frame update
     void Start()
     {
         character = GetComponent<CharacterController>();
+        bulletClip = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -26,15 +30,23 @@ public class PlayerMovement : MonoBehaviour
        
         if (Input.GetMouseButton(0))
         {
+            bulletClip.clip = sound;
+            bulletClip.Play();
             particleEffectPrefab.SetActive(true);
+           //GameObject effect = Pool.Instance.Get("particleEffectPrefab");
 
+     
             Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
             if (Physics.Raycast(ray,out hit,Mathf.Infinity))
             {
                 Debug.Log("Raycast got hit"+hit.transform.name);
 
-                Instantiate(hitMarketParticlePrefab,hit.point,Quaternion.LookRotation(hit.normal));
+                GameObject temp = Instantiate(hitMarketParticlePrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                 Destroy(temp, 1f); //use pool method+sound*/
+                
+
+                
 
             }
         }
